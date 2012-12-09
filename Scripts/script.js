@@ -77,7 +77,7 @@
                 }
             },
             interest: global.parseFloat(queryStringParameters.getValue("interest")) || 0.02,
-            bullet: queryStringParameters.getValue("bullet") || false
+            bullet: (!!global.parseInt(queryStringParameters.getValue("bullet"))) || false
         },
         options = $.extend(true, {}, defaultOptions, global.options),
         unitSingular = (function (val) {
