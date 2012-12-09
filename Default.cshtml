@@ -1,0 +1,129 @@
+﻿@{
+}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1,width=device-width" />
+        <title>Instant Loan Calculator</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/base/jquery-ui.css" />
+        <link rel="stylesheet" href="~/content/stylesheet.css" />
+    </head>
+    <body>
+        <ul class="pricing-calc-meters">
+            <li class="loan-amount-meter">
+                <div class="slider-header">
+                    <h3>Amount:</h3>
+                    <div class="help-tooltip">
+                        <img src="~/content/tooltip.jpg" alt="Tooltip">
+                        <p>Choose the amount you want to borrow. 
+                            @*<br><a href="~/LearnMore/">Learn More</a>*@
+                        </p>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="slider-item"></div>
+                    <div class="slider-value">
+                        <img class="rupee-symbol-small" src="~/Content/rupee.png" alt="Rs." />
+                        <div class="slider-value-current loan-amount-value"></div>
+                    </div>
+                </div>
+                <div class="loan-calculation-result">
+                    The maximum loan amount is 
+                    <img class="rupee-symbol-small" src="~/Content/rupee.png" alt="Rs." />
+                    <span class="loan-calculation-value loan-amount-max"></span>
+                    .
+                </div>
+            </li>
+            <li class="loan-duration-meter">
+                <div class="slider-header">
+                    <h3>Duration:</h3>
+                    <div class="help-tooltip">
+                        <img src="~/content/tooltip.jpg" alt="Tooltip">
+                        <p>Choose the duration of your loan.
+                            @*<br><a href="~/LearnMore/">Learn More</a>*@
+                        </p>
+                    </div>
+                </div>
+                <div class="slider-container">
+                    <div class="slider-item"></div>
+                    <div class="slider-value">
+                        <div class="slider-value-current loan-duration-value"></div>
+                    </div>
+                </div>
+                <div class="loan-calculation-result">
+                    The maximum loan duration is 
+                    <span class="loan-calculation-value loan-duration-max"></span>
+                </div>
+            </li>
+            <li class="loan-calculation-meter">
+                <div class="calculation-header">
+                    <h3>Repayment:</h3>
+                    <div class="help-tooltip">
+                        <img src="~/content/tooltip.jpg" alt="Tooltip">
+                        <p>Details about how you can pay back the loan
+                            @*<br><a href="~/LearnMore/">Learn More</a>*@
+                        </p>
+                    </div>
+                </div>
+                <div class="loan-calculation-result empty">
+                    Move the sliders to see available loan options.
+                </div>
+                <div class="loan-calculation-result valid">
+                    <div class="loan-installments">
+                        <div>Payments:
+                            <img class="rupee-symbol-small" src="~/Content/rupee.png" alt="Rs." />
+                            <span class="loan-calculation-value loan-installment-value"></span>
+                            per <span class="loan-installment-unit"></span>.
+                        </div>
+                        <div>
+                            Interest rate:
+                            <span class="loan-calculation-value loan-interest-value"></span>
+                            per
+                            <span class="loan-installment-unit"></span>.
+                        </div>
+                        <div>
+                            Number of payments:
+                            <span class="loan-calculation-value loan-duration-value-unformatted"></span> 
+                        </div>
+                        <div>
+                            In total, you will pay
+                            <img class="rupee-symbol-small" src="~/Content/rupee.png" alt="Rs." />
+                            <span class="loan-calculation-value loan-payback-value"></span>
+                            towards principal, interest, and fees, over the course of the loan.
+                        </div>
+                    </div>
+                    <div class="loan-bullet">
+                        <div>One lumpsum payment: 
+                            <img class="rupee-symbol-small" src="~/Content/rupee.png" alt="Rs." />
+                            <span class="loan-calculation-value loan-payback-value"></span>
+                        </div>
+                        <div>
+                            Due in: 
+                            <span class="loan-calculation-value loan-duration-value"></span> 
+                        </div>
+                        <div>
+                            Interest rate:
+                            <span class="loan-calculation-value loan-interest-value"></span>
+                            per
+                            <span class="loan-installment-unit"></span>.
+                        </div>
+                    </div>
+                    <div>
+                        There are no other charges for on-time or early payment of the loan.
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+        <script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js"></script>
+        <script src="~/scripts/jquery.ui.touch-punch.min.js"></script>
+
+        <script src="~/scripts/slideraccess.js"></script>
+        <script src="~/scripts/script.js"></script>
+
+    </body>
+</html>
