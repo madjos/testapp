@@ -8,25 +8,102 @@
  * http://docs.jquery.com/UI/Theming/API
  *
  */
-.ui-widget-header {background: #01adef }
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 2px solid #ffffff; background: #000; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 2px solid #fff; background: #333;}
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 2px solid #fff; background: #333; }
-.ui-widget :active { outline: none; }
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  { background: #333;  }
-.ui-slider { position: relative; text-align: left; background: none; background-color:#e0e2e2;border: 2px solid #fff;}
-.ui-slider a{outline:0;text-decoration:none;color:#fff;}
-.ui-slider .ui-slider-handle { position: absolute; z-index: 2; cursor: default; cursor:pointer;}
-.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0; }
-.ui-slider-horizontal { height:10px; margin-bottom:0px; }
-.ui-slider-horizontal .ui-slider-handle { top:-7px; margin-left: -2px;height:20px;width:7px; }
-.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
-.ui-slider-horizontal .ui-slider-range-min { left: 0; }
-.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+.ui-widget-header {
+    background: #01adef;
+}
 
-.ui-buttonset { margin-left: 0px; }
-button.ui-button-icon-only, button.ui-button-icons-only { border-width: 1px; border-color: black; width: 25px; }
-button.ui-button-icon-only .ui-button-text, button.ui-button-icons-only .ui-button-text { padding: 0px; background-color: #fff; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 2px solid #ffffff;
+    background: #000;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    border: 2px solid #fff;
+    background: #333;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    border: 2px solid #fff;
+    background: #333;
+}
+
+.ui-widget :active {
+    outline: none;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    background: #333;
+}
+
+.ui-slider {
+    position: relative;
+    text-align: left;
+    background: none;
+    background-color: #e0e2e2;
+    border: 2px solid #fff;
+}
+
+.ui-slider a {
+    outline: 0;
+    text-decoration: none;
+    color: #fff;
+}
+
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    cursor: default;
+    cursor: pointer;
+}
+
+.ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+    border: 0;
+    background-position: 0 0;
+}
+
+.ui-slider-horizontal {
+    height: 10px;
+    margin-bottom: 0px;
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+    top: -7px;
+    margin-left: -2px;
+    height: 20px;
+    width: 7px;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+    top: 0;
+    height: 100%;
+}
+
+.ui-slider-horizontal .ui-slider-range-min {
+    left: 0;
+}
+
+.ui-slider-horizontal .ui-slider-range-max {
+    right: 0;
+}
+
+.ui-buttonset {
+    margin-left: 0px;
+}
+
+button.ui-button-icon-only, button.ui-button-icons-only {
+    border-width: 1px;
+    border-color: black;
+    width: 25px;
+}
+
+button.ui-button-icon-only .ui-button-text, button.ui-button-icons-only .ui-button-text {
+    padding: 0px;
+    background-color: #fff;
+}
 
 
 body {
@@ -95,27 +172,27 @@ ul {
 }
 
 .help-tooltip {
-    position:relative;
-    display:inline-block;
-    float:left;
-    opacity:0;
-    z-index:1000;
-    cursor:pointer;
+    position: relative;
+    display: inline-block;
+    float: left;
+    opacity: 0;
+    z-index: 1000;
+    cursor: pointer;
     left: 5px;
     visibility: hidden;
-     -webkit-transition: opacity .2s ease-in-out;
+    -webkit-transition: opacity .2s ease-in-out;
     -moz-transition: opacity .2s ease-in-out;
     -o-transition: opacity .2s ease-in-out;
     transition: opacity .2s ease-in-out;
 }
 
 .pricing-calc-meters li:hover .help-tooltip {
-    visibility:visible;
-    opacity:.8;
+    visibility: visible;
+    opacity: .8;
 }
 
 .pricing-calc-meters li:hover .help-tooltip:hover {
-    opacity:1;
+    opacity: 1;
 }
 
 .slider-container {
@@ -125,26 +202,26 @@ ul {
 
 .help-tooltip p {
     font-size: 12px;
-    padding:5px;
-    width:300px;
-    position:absolute;
-    background:#454545;
-    right:-160px;
-    top:-10px;
-    opacity:0;
-    color:#fff;
-    z-index:1000;
-    display:none;
-    cursor:auto;
-}
-        
-.help-tooltip:hover p {
-    display:block;
-    opacity:1;
-    right:-320px;
+    padding: 5px;
+    width: 300px;
+    position: absolute;
+    background: #454545;
+    right: -160px;
+    top: -10px;
+    opacity: 0;
+    color: #fff;
+    z-index: 1000;
+    display: none;
+    cursor: auto;
 }
 
-.help-tooltip:hover { 
+.help-tooltip:hover p {
+    display: block;
+    opacity: 1;
+    right: -320px;
+}
+
+.help-tooltip:hover {
     z-index: 1000;
 }
 
@@ -179,7 +256,7 @@ ul {
 
 .rupee-symbol-small {
     vertical-align: top;
-    margin-top: 4px;    
+    margin-top: 4px;
     width: 9px;
     height: 12px;
 }
@@ -197,4 +274,3 @@ ul {
 .loan-calculation-result {
     display: block;
 }
-

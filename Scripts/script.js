@@ -155,7 +155,8 @@
         },
         adjustValues = function () {
             var interest = options.interest,
-                tempVal = Math.pow((1 + interest), currentDuration),
+                tempVal,
+                paybackValue,
                 show,
                 hide;
 
@@ -163,19 +164,32 @@
             currentDurationUnformattedElement.text(currentDuration);
             currentDurationElement.text(formatDuration(currentDuration));
 
-            if (tempVal === 1 || !currentAmount) {
-                installmentValue = 0;
+            paybackValue = 0;
+            installmentValue = 0;
+
+            if (currentAmount && currentDuration) {
+                if (options.bullet) {
+                    paybackValue = currentAmount + (interest * currentAmount * currentDuration);
+                    installmentValue = paybackValue / currentDuration;
+                } else {
+                    tempVal = Math.pow((1 + interest), currentDuration);
+                    if (tempVal !== 1) {
+                        installmentValue = currentAmount * interest * (tempVal) / (tempVal - 1);
+                        paybackValue = installmentValue * currentDuration;
+                    }
+                }
+            }
+
+            if (!paybackValue || ! installmentValue) {
                 show = emptyLoanCalculationElement;
                 hide = validLoanCalculationElement;
             } else {
-                installmentValue = currentAmount * interest * (tempVal) / (tempVal - 1);
                 show = validLoanCalculationElement;
                 hide = emptyLoanCalculationElement;
             }
 
             installmentValueElement.text(formatCurrency(installmentValue));
-
-            paybackValueElement.text(formatCurrency(installmentValue * currentDuration));
+            paybackValueElement.text(formatCurrency(paybackValue));
 
             hide.stop(true);
             show.stop(true);
@@ -190,7 +204,7 @@
         $(".loan-installments").hide();
     } else {
         $(".loan-bullet").hide();
-        $(".loan-installments").show();        
+        $(".loan-installments").show();
     }
 
     loanUnitElement.text(unitSingular);
