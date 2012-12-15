@@ -98,10 +98,12 @@
         loanDurationElement = $(".loan-duration-meter"),
         currentAmountElement = $(".loan-amount-value"),
         currentDurationElement = $(".loan-duration-value"),
+        currentInterestValueElement = $(".loan-interest-value"),
         currentDurationUnformattedElement = $(".loan-duration-value-unformatted"),
         loanUnitElement = $(".loan-installment-unit"),
         installmentValueElement = $(".loan-installment-value"),
         paybackValueElement = $(".loan-payback-value"),
+        endDateElement = $(".loan-enddate-value"),
         interestValueElemt = $(".loan-interest-value"),
         formatCurrency = function (val) {
             var str = "" + val.toFixed(2),
@@ -158,7 +160,9 @@
                 tempVal,
                 paybackValue,
                 show,
-                hide;
+                hide,
+                paybackDate,
+                multiplier;
 
             currentAmountElement.text(formatCurrency(currentAmount));
             currentDurationUnformattedElement.text(currentDuration);
@@ -180,16 +184,39 @@
                 }
             }
 
-            if (!paybackValue || ! installmentValue) {
+            if (!paybackValue || !installmentValue) {
                 show = emptyLoanCalculationElement;
                 hide = validLoanCalculationElement;
             } else {
                 show = validLoanCalculationElement;
                 hide = emptyLoanCalculationElement;
+
+                paybackDate = new Date();
+                switch (unitSingular.toLowerCase()) {
+                    case "day":
+                        multiplier = 1;
+                    case "week":
+                        multiplier = 7;
+                        paybackDate.setDate(paybackDate.getDate() + (currentDuration * multiplier));
+                        break;
+                    case "month":
+                        paybackDate.setMonth(paybackDate.getMonth() + currentDuration);
+                        break;
+                    default:
+                        alert("invalid loan");
+                        paybackDate = null;
+                }
+            }
+
+            if (paybackDate) {
+                endDateElement.text(paybackDate.toDateString());
+            } else {
+                endDateElement.text("TBD");
             }
 
             installmentValueElement.text(formatCurrency(installmentValue));
             paybackValueElement.text(formatCurrency(paybackValue));
+            currentInterestValueElement.text(formatCurrency(global.Math.max(0, paybackValue - currentAmount)));
 
             hide.stop(true);
             show.stop(true);

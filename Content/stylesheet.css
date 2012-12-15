@@ -105,17 +105,85 @@ button.ui-button-icon-only .ui-button-text, button.ui-button-icons-only .ui-butt
     background-color: #fff;
 }
 
-
 body {
     cursor: default;
     font-size: 14px;
     font-family: "Segoe UI Light","Helvetica",Garuda,Arial,sans-serif;
     color: #323232;
+    background-color: #95B3D7;
+    margin: 0;
+}
+
+.main-content {
+    background-color: #ffffff;
+    width: 70%;
+    min-width: 300px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 5px;
+    -moz-box-shadow: 3px 3px 4px #454545;
+    -webkit-box-shadow: 3px 3px 4px #454545;
+    box-shadow: 3px 3px 4px #454545;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#454545')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#454545');
+}
+
+.site-title {
+    display: inline;
+    left: 50px;
+    position: fixed;
+    height: 50px;
+    width:  150px;
+    background-image: url("logo.png");
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+}
+
+.page-header {
+    background-color: #808080;
+    height: 25px;
+    margin-bottom: 60px;
+}
+
+.sign-in {
+    padding-top: 2px;
+    text-align: right;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.sign-in a, .sign-in a:link, .sign-in a:visited  {
+    background-color: #000;
+    color: #fff;
+    text-transform: uppercase;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.page-intro {
+    color: #ffffff;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.intro-title {
+    font-size: 24px;
+    margin: 20px;
+}
+
+.intro-features {
+    margin: 10px;
 }
 
 h3 {
-    font-size: 12px;
     margin: 0px;
+    font-size: 1em;
 }
 
 a:hover {
@@ -153,6 +221,63 @@ ul {
     padding-left: 5px;
 }
 
+.loan-sliders {
+    display: inline-block;
+}
+
+.loan-summary {
+    display: inline-block;
+    float: right;
+    border: 1px;
+    border-color: #808080;
+    border-style: solid;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.loan-summary-table {
+    border-spacing: 0;
+}
+
+.loan-summary-table td {
+    min-width: 100px;
+    max-width: 200px;
+    height: 50px;
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+tr.principal {
+    background-color: #000;
+    color: #fff;
+}
+
+tr.interest {
+    color: #808080;
+}
+
+tr.interest td {
+    border-bottom: thin dashed #808080;
+}
+
+.loan-summary-table td:first-child {
+     min-width: 150px; 
+}
+
+.apply-now {
+    width: 100%;
+    height: 40px;
+}
+
+.apply-now a {
+    height: 100%;
+    display: block;
+    background-image: url("applynow.png");
+    background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
 .pricing-calc-meters > li {
     list-style-type: none;
     padding: 0px;
@@ -173,7 +298,7 @@ ul {
 
 .help-tooltip {
     position: relative;
-    display: inline-block;
+    display: none;
     float: left;
     opacity: 0;
     z-index: 1000;
@@ -248,7 +373,6 @@ ul {
 }
 
 .slider-value-current, .loan-calculation-value {
-    font-size: 14px;
     color: #0CA2DA;
     display: inline-block;
     font-family: "Segoe UI";
@@ -273,4 +397,8 @@ ul {
 
 .loan-calculation-result {
     display: block;
+}
+
+.hidden {
+    display: none;
 }
