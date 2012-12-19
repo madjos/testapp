@@ -137,6 +137,10 @@
                     </div>
                 </li>
             </ul>
+            <div class="loan-interest-rate-area">
+                Interest Rate:
+                <span class="slider-value-current loan-interest-rate-value"></span>
+            </div>
             </div>
 
             <div class="loan-summary large-screen">
@@ -166,12 +170,18 @@
                     </tr>
                     <tr class="repayment">
                         <td>
-                            Auto repayment <br/>(<span class="loan-enddate-value"></span>):
+                            Repayment <br/>
+                            (<span class="slider-value-current loan-payback-schedule"></span>):
                         </td>
                         <td>
                             <div class="slider-value">
                                 <img class="rupee-symbol-small" src="~/Content/rupee.png" alt="Rs." />
-                                <div class="slider-value-current loan-payback-value"></div>
+                                <span class="loan-bullet">
+                                    <span class="slider-value-current loan-payback-value"></span>
+                                </span>
+                                <span class="loan-installments">
+                                    <span class="slider-value-current loan-installment-value"></span>
+                                </span>
                             </div>
                         </td>
                     </tr>

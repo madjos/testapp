@@ -99,11 +99,12 @@
         currentAmountElement = $(".loan-amount-value"),
         currentDurationElement = $(".loan-duration-value"),
         currentInterestValueElement = $(".loan-interest-value"),
+        currentAPRValueElement = $(".loan-interest-rate-value"),
         currentDurationUnformattedElement = $(".loan-duration-value-unformatted"),
         loanUnitElement = $(".loan-installment-unit"),
         installmentValueElement = $(".loan-installment-value"),
         paybackValueElement = $(".loan-payback-value"),
-        endDateElement = $(".loan-enddate-value"),
+        paybackScheduleElement = $(".loan-payback-schedule"),
         interestValueElemt = $(".loan-interest-value"),
         formatCurrency = function (val) {
             var str = "" + val.toFixed(2),
@@ -155,14 +156,65 @@
             output += val + "%";
             return output;
         },
+        getBulletPaybackText = function (unit, duration) {
+            var paybackDate = new Date(),
+                output;
+
+            switch (unit.toLowerCase()) {
+                case "day":
+                    paybackDate.setDate(paybackDate.getDate() + duration);
+                    break;
+                case "week":
+                    paybackDate.setDate(paybackDate.getDate() + (duration * 7));
+                    break;
+                case "month":
+                    paybackDate.setMonth(paybackDate.getMonth() + duration);
+                    break;
+                default:
+                    alert("invalid loan");
+                    paybackDate = null;
+                    break;
+            }
+
+            if (paybackDate) {
+                output = paybackDate.toDateString();
+            }
+
+            return output;
+        },
+        getInstallmentPaybackText = function (unit, duration) {
+            var frequency,
+                output;
+
+            switch (unit.toLowerCase()) {
+                case "day":
+                    frequency = "daily";
+                    break;
+                case "week":
+                    frequency = "weekly";
+                    break;
+                case "month":
+                    frequency = "monthly";
+                    break;
+                default:
+                    alert("invalid loan");
+                    break;
+            }
+
+            if (frequency) {
+                output = "" + duration + " " + frequency + " payments";
+            }
+
+            return output;
+        },
         adjustValues = function () {
             var interest = options.interest,
                 tempVal,
                 paybackValue,
                 show,
                 hide,
-                paybackDate,
-                multiplier;
+                apr,
+                paymentText;
 
             currentAmountElement.text(formatCurrency(currentAmount));
             currentDurationUnformattedElement.text(currentDuration);
@@ -191,28 +243,20 @@
                 show = validLoanCalculationElement;
                 hide = emptyLoanCalculationElement;
 
-                paybackDate = new Date();
-                switch (unitSingular.toLowerCase()) {
-                    case "day":
-                        multiplier = 1;
-                    case "week":
-                        multiplier = 7;
-                        paybackDate.setDate(paybackDate.getDate() + (currentDuration * multiplier));
-                        break;
-                    case "month":
-                        paybackDate.setMonth(paybackDate.getMonth() + currentDuration);
-                        break;
-                    default:
-                        alert("invalid loan");
-                        paybackDate = null;
+                if (options.bullet) {
+                    paymentText = getBulletPaybackText(unitSingular, currentDuration);
+                } else {
+                    paymentText = getInstallmentPaybackText(unitSingular, currentDuration);
                 }
+
+                apr = formatInterest(Math.pow(Math.pow((paybackValue / currentAmount), (1 / currentDuration)), 12) - 1);
             }
 
-            if (paybackDate) {
-                endDateElement.text(paybackDate.toDateString());
-            } else {
-                endDateElement.text("TBD");
-            }
+            paymentText = paymentText || "TBD";
+            paybackScheduleElement.text(paymentText);
+
+            apr = apr || "TBD";
+            currentAPRValueElement.text(apr);
 
             installmentValueElement.text(formatCurrency(installmentValue));
             paybackValueElement.text(formatCurrency(paybackValue));
